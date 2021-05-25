@@ -56,7 +56,7 @@
 
   app.get("/", (req, res) => {
     Postagem.find().populate("categoria").lean().sort({data: "desc"}).then((postagens) => {
-      res.render("index", {postagens: postagens})
+      res.render("index")
     }).catch((err) => {
       console.log()
       req.flash("error_msg", "Houve um erro interno")
