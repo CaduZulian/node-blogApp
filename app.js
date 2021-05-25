@@ -63,7 +63,7 @@
       res.redirect("/404")
     })*/
 
-    res.render("index", {postagens: postagens})
+    res.render("index"/* , {postagens: postagens}*/)
   })
 
 app.get("/postagem/:slug" , (req, res) => {
