@@ -54,13 +54,13 @@
 
 //Rotas
 
-  app.get("/404", (req, res) => {
+  app.get("/", (req, res) => {
     Postagem.find().populate("categoria").lean().sort({data: "desc"}).then((postagens) => {
       res.render("index", {postagens: postagens})
     }).catch((err) => {
       console.log()
       req.flash("error_msg", "Houve um erro interno")
-      res.redirect("/")
+      res.redirect("/404")
     })
   })
 
@@ -78,9 +78,8 @@ app.get("/postagem/:slug" , (req, res) => {
   })
 })
 
-  app.get("/", (req, res) => {
-    //res.send("Erro 404!")
-    res.render("index")
+  app.get("/404", (req, res) => {
+    res.send("Erro 404!")
   })
 
   app.get("/categorias", (req, res) => {
