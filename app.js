@@ -53,14 +53,14 @@
     app.use(express.static(path.join(__dirname,"public")))
 
 //Rotas
+
   app.get("/", (req, res) => {
     Postagem.find().populate("categoria").lean().sort({data: "desc"}).then((postagens) => {
       res.render("index", {postagens: postagens})
     }).catch((err) => {
       req.flash("error_msg", "Houve um erro interno")
-      res.redirect("/404")
+      res.redirect("/")
     })
-    
   })
 
 app.get("/postagem/:slug" , (req, res) => {
