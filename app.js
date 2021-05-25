@@ -58,8 +58,9 @@
     Postagem.find().populate("categoria").lean().sort({data: "desc"}).then((postagens) => {
       res.render("index", {postagens: postagens})
     }).catch((err) => {
+      console.log()
       req.flash("error_msg", "Houve um erro interno")
-      res.redirect("/")
+      res.redirect("/404")
     })
   })
 
